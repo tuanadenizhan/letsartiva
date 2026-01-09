@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="game_page_title">Artiva | Oyun</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="inner-page">
+
+<header class="navbar">
+   <a href="index.html" class="logo-link">
+  <img src="assets/artiva-logo.png" class="logo" alt="Artiva Logo">
+
+</a>
+
+  <nav>
+    <a href="oyun.html" data-i18n="menu_game">Oyun</a>
+    <a href="biz-kimiz.html" data-i18n="menu_about">Biz Kimiz?</a>
+    <a href="artivakid.html" data-i18n="menu_kid">ArtivaKid!</a>
+    <a href="iletisim.html" data-i18n="menu_contact">İletişim</a>
+
+    <div class="lang">
+      <button onclick="setLanguage('tr', this)">TR</button>
+      <button onclick="setLanguage('en', this)">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ÜST AÇIKLAMA -->
+<div class="page-content">
+  <h1 data-i18n="game_title">Artiva</h1>
+  <p data-i18n="game_desc">
+    Artiva, yaratıcılığı merkeze alan bir illüstrasyon kart oyunudur.
+  </p>
+</div>
+<div class="how-to-play">
+  <h3 data-i18n="how_title">Nasıl Oynanır?</h3>
+  <p data-i18n="how_text">
+    Artiva, kelimeler ve illüstrasyonlar üzerinden hikâye kurmaya dayalı bir kart oyunudur. Her oyuncuya 3 illüstrasyon kartı dağıtılır ve ortaya 1 kelime kartı açılır; oyuncular bu kelimeyle en çok ilişkilendirdikleri kartı seçerek kısa bir anlatım yapar. Diğer oyuncular anlatının hangi karta ait olduğunu tahmin eder, doğru tahminler puan kazandırır ve görev/şans kartları oyuna sürprizler ekler.
+  </p>
+</div>
+
+
+<!-- SLIDER -->
+<div class="slider">
+
+  <button class="arrow left" onclick="prevSlide()">‹</button>
+
+  <div class="slide active">
+    <img src="assets/piyonlar.png" alt="Piyonlar">
+    <h3 data-i18n="pawn_title">Piyonlar</h3>
+    <p data-i18n="pawn_desc">Oyuncunun yolculuğunu temsil eden sembolik oyun taşlarıdır.</p>
+  </div>
+
+  <div class="slide">
+    <img src="assets/kelime-kartlari.png" alt="Kelime Kartları">
+    <h3 data-i18n="word_title">Kelime Kartları</h3>
+    <p data-i18n="word_desc">Hikaye kurmayı ve ifade becerisini destekler.</p>
+  </div>
+
+  <div class="slide">
+    <img src="assets/illustrasyon-kartlari.png" alt="İllüstrasyon Kartları">
+    <h3 data-i18n="illustration_title">İllüstrasyon Kartları</h3>
+    <p data-i18n="illustration_desc">Her kart bir duygu, durum ya da hayal gücü anlatıcısıdır.</p>
+  </div>
+
+  <div class="slide">
+    <img src="assets/gorev-sans-kartlari.png" alt="Görev/Şans Kartları">
+    <h3 data-i18n="task_title">Görev / Şans Kartları</h3>
+    <p data-i18n="task_desc">Oyunun yönünü değiştiren sürpriz görevler içerir.</p>
+  </div>
+
+  <button class="arrow right" onclick="nextSlide()">›</button>
+</div>
+
+<script src="lang.js"></script>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+showSlide(0);
+</script>
+
+</body>
+</html>
